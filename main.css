@@ -1,11 +1,11 @@
 body {
+    font-family: tahoma;
     background: url("http://subtlepatterns.com/patterns/ps_neutral.png");
 }
 
 table {
     margin: auto;
     background: #FFF;
-    font-family: tahoma;
     border-collapse: collapse;
     background: #FFF;
 }
@@ -37,6 +37,11 @@ th:nth-of-type(5) {
     color: blue;
     border-top: .25em solid blue;
 }
+th:nth-of-type(6) {
+    color: #333;
+    border-top: .25em solid #333;
+}
+
 td:nth-of-type(2) {
     color: green;
     background: rgb(250, 255, 250);
@@ -52,6 +57,10 @@ td:nth-of-type(4) {
 td:nth-of-type(5) {
     color: blue;
     background: rgb(250,250,255);
+}
+td:nth-of-type(6) {
+    color: #666;
+    background: rgb(250,250,250);
 }
 
 td {
@@ -77,5 +86,10 @@ td:first-child {
 input {
     display: block;
     margin: 1em auto;
+    text-align: center;
+}
+
+p {
+    font-size: .5em;
     text-align: center;
 }
