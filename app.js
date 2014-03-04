@@ -2,10 +2,11 @@ require([
     "data/chrome", 
     "data/firefox",
     "data/opera",
-    "data/internet explorer"
-], function( chrome, firefox, opera, ie ) {
+    "data/internet explorer",
+    "data/safari"
+], function( chrome, firefox, opera, ie, safari ) {
 
-    var browsers = [ chrome, firefox, opera, ie ];
+    var browsers = [ chrome, firefox, opera, ie, safari ];
     var properties = [];
     
     function copyUnique( source, destination ) {
@@ -33,7 +34,7 @@ require([
     
     /* Table Labels */
     row = document.createElement("tr");
-    [ "Property", "Chrome", "Firefox", "Opera", "IE" ].forEach(function(value){
+    [ "Property", "Chrome", "Firefox", "Opera", "IE", "Safari" ].forEach(function(value){
         cell = document.createElement("th");
         cell.appendChild( document.createTextNode( value ) );
         row.appendChild(cell);
