@@ -34,7 +34,7 @@ require([
     
     /* Table Labels */
     row = document.createElement("tr");
-    [ "Property", "Chrome", "Firefox", "Opera", "IE", "Safari" ].forEach(function(value){
+    [ "Property", "Chrome 33", "Firefox 27", "Opera 12", "IE 11", "Safari 7" ].forEach(function(value){
         cell = document.createElement("th");
         cell.appendChild( document.createTextNode( value ) );
         row.appendChild(cell);
