@@ -33,11 +33,15 @@ th:nth-of-type(4) {
     color: red;
     border-top: .25em solid red;
 }
-th:nth-of-type(5) {
+th:nth-of-type(5),
+th:nth-of-type(6) {
     color: blue;
     border-top: .25em solid blue;
 }
 th:nth-of-type(6) {
+    color: lightblue;
+}
+th:nth-of-type(7) {
     color: #333;
     border-top: .25em solid #333;
 }
@@ -54,11 +58,15 @@ td:nth-of-type(4) {
     color: red;
     background: rgb(255, 250, 250);
 }
-td:nth-of-type(5) {
+td:nth-of-type(5),
+td:nth-of-type(6) {
     color: blue;
     background: rgb(250,250,255);
 }
 td:nth-of-type(6) {
+    color: lightblue;
+}
+td:nth-of-type(7) {
     color: #666;
     background: rgb(250,250,250);
 }
