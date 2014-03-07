@@ -16,6 +16,7 @@ tr:first-child {
 
 th {
     padding: .5em 1em;
+    white-space: nowrap;
 }
 
 th:nth-of-type(1) {
