@@ -2,10 +2,13 @@ require([
     "data/chrome", 
     "data/firefox",
     "data/opera",
-    "data/internet explorer"
-], function( chrome, firefox, opera, ie ) {
+    "data/internet explorer 11",
+    "data/internet explorer 10",
+    "data/internet explorer 9",
+    "data/safari"
+], function( chrome, firefox, opera, ie11, ie10, ie9, safari ) {
 
-    var browsers = [ chrome, firefox, opera, ie ];
+    var browsers = [ chrome, firefox, opera, ie11, ie10, ie9, safari ];
     var properties = [];
     
     function copyUnique( source, destination ) {
@@ -21,9 +24,8 @@ require([
     });
     
     properties.sort(function(a, b) {
-        a = a.toLowerCase();
-        b = b.toLowerCase();
-        
+        //a = a.toLowerCase();
+        //b = b.toLowerCase();
         return a < b ? -1 : a > b ? 1 : 0;
     });
     
@@ -33,7 +35,16 @@ require([
     
     /* Table Labels */
     row = document.createElement("tr");
-    [ "Property", "Chrome", "Firefox", "Opera", "IE" ].forEach(function(value){
+    [
+        "Property",
+        "Chrome 33", 
+        "Firefox 27", 
+        "Opera 12", 
+        "IE 11", 
+        "IE 10", 
+        "IE 9", 
+        "Safari 7"
+    ].forEach(function(value){
         cell = document.createElement("th");
         cell.appendChild( document.createTextNode( value ) );
         row.appendChild(cell);
