@@ -34,14 +34,20 @@ th:nth-of-type(4) {
     border-top: .25em solid red;
 }
 th:nth-of-type(5),
-th:nth-of-type(6) {
+th:nth-of-type(6),
+th:nth-of-type(7) {
     color: blue;
     border-top: .25em solid blue;
 }
-th:nth-of-type(6) {
+th:nth-of-type(6),
+th:nth-of-type(7) {
     color: lightblue;
+    border-color: #99F;
 }
 th:nth-of-type(7) {
+    border-color: #CCF;
+}
+th:nth-of-type(8) {
     color: #333;
     border-top: .25em solid #333;
 }
@@ -59,14 +65,16 @@ td:nth-of-type(4) {
     background: rgb(255, 250, 250);
 }
 td:nth-of-type(5),
-td:nth-of-type(6) {
+td:nth-of-type(6),
+td:nth-of-type(7) {
     color: blue;
     background: rgb(250,250,255);
 }
-td:nth-of-type(6) {
+td:nth-of-type(6),
+td:nth-of-type(7) {
     color: lightblue;
 }
-td:nth-of-type(7) {
+td:nth-of-type(8) {
     color: #666;
     background: rgb(250,250,250);
 }
