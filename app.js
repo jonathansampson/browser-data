@@ -4,11 +4,13 @@ require([
     "data/opera",
     "data/internet explorer 11",
     "data/internet explorer 10",
+    "data/internet explorer 11 as 10",
     "data/internet explorer 9",
+    "data/internet explorer 11 as 9",
     "data/safari"
-], function( chrome, firefox, opera, ie11, ie10, ie9, safari ) {
+], function( chrome, firefox, opera, ie11, ie10, as10, ie9, as9, safari ) {
 
-    var browsers = [ chrome, firefox, opera, ie11, ie10, ie9, safari ];
+    var browsers = [ chrome, firefox, opera, ie11, ie10, as10, ie9, as9, safari ];
     var properties = [];
     
     function copyUnique( source, destination ) {
@@ -42,7 +44,9 @@ require([
         "Opera 12", 
         "IE 11", 
         "IE 10", 
-        "IE 9", 
+        "dm10",
+        "IE 9",
+        "dm9",
         "Safari 7"
     ].forEach(function(value){
         cell = document.createElement("th");
