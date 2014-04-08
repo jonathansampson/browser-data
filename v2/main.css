@@ -1,0 +1,44 @@
+tr {
+  font-size: .75em;
+}
+
+tr:first-child {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+thead th,
+tbody td {
+  text-align: center;
+}
+
+thead th:first-child,
+tbody td:first-child {
+  text-align: left;
+}
+
+/* 
+  Themes 
+*/
+
+.opera { 
+    color: red;
+}
+
+.safari {
+    color: grey;
+}
+
+.chrome {
+    color: #0B0;
+    background-color: #EFE;
+}
+
+.firefox {
+    color: orange;
+}
+
+.iexplorer {
+    color: #00B;
+    background-color: #EEF;
+}
