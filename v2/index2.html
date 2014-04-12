@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Browser Data</title>
+		<script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+		<link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet" />
+		<script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
+		<link rel="stylesheet" href="main.css">
+		<script src="app2.js"></script>
+	</head>
+	<body class="container" ng-app="browserdata" ng-controller="mainController">
+
+		<h1>{{ title }}</h1>
+
+		<form role="form">
+			<div class="form-group">
+				<input placeholder="AnalyserNode" class="form-control" ng-model="propertyFilter">
+			</div>
+		</form>
+
+		<table class="table">
+
+			<thead>
+				<tr>
+					<th>Feature</th>
+					<th ng-repeat="browser in browsers">
+						{{ browser }}
+					</th>
+				</tr>
+			</thead>
+
+			<tbody ng-repeat="feature in features">
+				<tr>
+					<td>{{ feature.mainProp }}</td>
+					<td ng-repeat="browser in browsers">
+						<i class="glyphicon glyphicon-ok"></i>
+					</td>
+				</tr>
+ 				<tr ng-repeat="property in feature.subProps">
+					<td>{{ property }}</td>
+					<td ng-repeat="browser in browsers">
+						<i class="glyphicon glyphicon-ok" nf-if="feature.browsers[browser]"></i>
+					</td>
+				</tr>
+			</tbody>
+
+		</table>
+
+	</body>
+</html>
