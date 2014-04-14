@@ -2,7 +2,8 @@ tr {
   font-size: .75em;
 }
 
-tr:first-child {
+thead tr:first-child,
+table.index tr:first-child {
   font-size: 1em;
   font-weight: bold;
 }

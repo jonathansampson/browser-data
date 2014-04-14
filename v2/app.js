@@ -1,12 +1,12 @@
-angular.module( "browserdata", [] )
+angular.module( "browserdata", [ "ngRoute" ] )
 
 .factory( "dataFactory", function ( $http ) {
 	return $http.get( "combined.data.json" );
 })
 
-.controller( "mainController", function ( $scope, dataFactory ) {
+.controller( "mainController", function ( $scope, $routeParams, dataFactory ) {
 
-	$scope.title = "Browser Data";
+	$scope.title = $routeParams.feature || "Browser Data";
 	$scope.browsers = [];
 	$scope.features = [];
 
@@ -19,9 +19,13 @@ angular.module( "browserdata", [] )
 	};
 
 	dataFactory.success(function ( response ) {
-		if ( ! $scope.features.length ) {
-			$scope.features = response;	
-		}
+		// if ( ! $scope.features.length ) {
+		// $scope.features = response.slice(0,3);	
+		// }
+		$scope.features = $routeParams.feature 
+			? [ _.findWhere( response, { "name": $routeParams.feature } ) ] 
+			: response;
+
 		if ( ! $scope.browsers.length ) {
 			$scope.browsers = [
 				{ "name": "Chrome", "version": "34" },
@@ -31,5 +35,25 @@ angular.module( "browserdata", [] )
 			];
 		}
 	});
+
+})
+
+.config( function ( $routeProvider ) {
+
+	$routeProvider
+
+	.when( "/", {
+		templateUrl: "partials/index.html",
+		controller: "mainController"
+	})
+
+	.when( "/:feature", {
+		templateUrl: "partials/feature.html",
+		controller: "mainController"
+	})
+
+	.otherwise({
+		redirectTo: "/"
+	})
 
 });
