@@ -18,11 +18,12 @@ tbody td:first-child {
 }
 
 /* 
-  Themes 
+  Themes 63, 53, 21
 */
 
-.opera { 
-    color: red;
+.opera {
+    color: #B00;
+    background-color: #FEE;
 }
 
 .safari {
@@ -35,7 +36,8 @@ tbody td:first-child {
 }
 
 .firefox {
-    color: orange;
+    color: orangered;
+    background-color: #fff7db;
 }
 
 .iexplorer {

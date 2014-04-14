@@ -1,51 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Browser Data</title>
-        <script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
-        <link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet" />
-        <script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
-        <link rel="stylesheet" href="main.css">
-        <script src="app.js"></script>
-    </head>
-    <body class="container" ng-app="browsers" ng-controller="browserData">
+	<head>
+		<meta charset="UTF-8">
+		<title>Browser Data</title>
+		<script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+		<link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet" />
+		<script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
+		<link rel="stylesheet" href="main.css">
+		<script src="app.js"></script>
+	</head>
+	<body class="container" ng-app="browserdata" ng-controller="mainController">
 
-        <form role="form">
-          <div class="form-group">
-            <input placeholder="AnalyserNode" class="form-control" ng-model="propertyFilter">
-          </div>
-        </form>
+		<h1>{{ title }}</h1>
 
-        <table class="table">
-          
-          <thead>
-            <tr>
-              <th>Feature</th>
-              <th class="{{ browser.name | lowercase }}" ng-repeat="browser in browsers">
-                {{ browser.name + " " + browser.version }}
-              </th>
-            </tr>
-          </thead>
-          
-          <tbody ng-repeat="feature in features | filter : { name: propertyFilter }">
-            <tr>
-              <td>{{ feature.name }}</td>
-              <td ng-repeat="browser in browsers" class="{{ browser.name | lowercase }}">
-                <i class="glyphicon glyphicon-ok" ng-if="supports( browser, feature, null )"></i>
-              </td>
-            </tr>
-             <tr ng-repeat="property in feature.properties">
-              <td>{{ property }}</td>
-              <td ng-repeat="browser in browsers" class="{{ browser.name | lowercase }}">
-                <i class="glyphicon glyphicon-ok" ng-if="supports( browser, feature, property )"></i>
-              </td>
-            </tr>
-          </tbody>
-          
-        </table>
+		<form class="form">
+			<div class="form-group">
+				<input class="form-control" ng-model="propertyFilter" placeholder="ArrayBuffer">
+			</div>
+		</form>
 
-    </body>
+		<table class="table">
+
+			<colgroup>
+				<col>
+				<col ng-repeat="browser in browsers" class="{{ browser.name | lowercase }}">
+			</colgroup>
+
+			<thead>
+				<tr>
+					<th>Feature</th>
+					<th ng-repeat="browser in browsers">
+						{{ browser.name }} {{ browser.version }}
+					</th>
+				</tr>
+			</thead>
+
+			<tbody ng-repeat="feature in features | filter: { name: propertyFilter }">
+				<tr>
+					<td>{{ feature.name }}</td>
+					<td ng-repeat="browser in browsers">
+						<i class="glyphicon glyphicon-ok" ng-if="supports( feature, browser, null )"></i>
+					</td>
+				</tr>
+<!--   				<tr ng-repeat="property in feature.properties">
+					<td>{{ property }}</td>
+					<td ng-repeat="browser in browsers">
+						<i class="glyphicon glyphicon-ok" ng-if="supports( feature, browser, $parent.$index )"></i>
+					</td>
+				</tr> -->
+			</tbody>
+
+		</table>
+
+	</body>
 </html>
