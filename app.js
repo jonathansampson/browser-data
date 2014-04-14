@@ -19,18 +19,17 @@ angular.module( "browserdata", [ "ngRoute" ] )
 	};
 
 	dataFactory.success(function ( response ) {
-		// if ( ! $scope.features.length ) {
-		// $scope.features = response.slice(0,3);	
-		// }
+
 		$scope.features = $routeParams.feature 
 			? [ _.findWhere( response, { "name": $routeParams.feature } ) ] 
 			: response;
 
+		// TODO: Build from source
 		if ( ! $scope.browsers.length ) {
 			$scope.browsers = [
-				{ "name": "Chrome", "version": "34" },
-				{ "name": "Firefox", "version": "28" },
-				{ "name": "Opera", "version": "12" },
+				{ "name": "Chrome",    "version": "34" },
+				{ "name": "Firefox",   "version": "28" },
+				{ "name": "Opera",     "version": "12" },
 				{ "name": "IExplorer", "version": "11" }
 			];
 		}
