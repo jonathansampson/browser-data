@@ -1,2 +1,2 @@
-v2/node_modules/*
-v2/browser_data/*
+node_modules/*
+browser_data/*

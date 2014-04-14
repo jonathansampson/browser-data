@@ -1,90 +1,59 @@
-require([
-    "data/chrome", 
-    "data/firefox",
-    "data/opera",
-    "data/internet explorer 11",
-    "data/internet explorer 10",
-    "data/internet explorer 11 as 10",
-    "data/internet explorer 9",
-    "data/internet explorer 11 as 9",
-    "data/safari"
-], function( chrome, firefox, opera, ie11, ie10, as10, ie9, as9, safari ) {
+angular.module( "browserdata", [ "ngRoute" ] )
 
-    var browsers = [ chrome, firefox, opera, ie11, ie10, as10, ie9, as9, safari ];
-    var properties = [];
-    
-    function copyUnique( source, destination ) {
-        source.forEach(function( value ) {
-            if ( destination.indexOf( value ) < 0 ) {
-                destination.push( value );
-            }
-        });
-    }
+.factory( "dataFactory", function ( $http ) {
+	return $http.get( "combined.data.json" );
+})
 
-    browsers.forEach(function( browser ){
-        copyUnique( browser, properties );
-    });
-    
-    properties.sort(function(a, b) {
-        //a = a.toLowerCase();
-        //b = b.toLowerCase();
-        return a < b ? -1 : a > b ? 1 : 0;
-    });
-    
-    var row, 
-        cell, 
-        table = document.createElement("table");
-    
-    /* Table Labels */
-    row = document.createElement("tr");
-    [
-        "Property",
-        "Chrome 33", 
-        "Firefox 27", 
-        "Opera 12", 
-        "IE 11", 
-        "IE 10", 
-        "dm10",
-        "IE 9",
-        "dm9",
-        "Safari 7"
-    ].forEach(function(value){
-        cell = document.createElement("th");
-        cell.appendChild( document.createTextNode( value ) );
-        row.appendChild(cell);
-    });
-    table.appendChild(row);
-    
-    /* Table Body */
-    properties.forEach(function( property ){
-        
-        row = document.createElement("tr");
-        
-        cell = document.createElement("td");
-        cell.appendChild(document.createTextNode(property));
-        row.appendChild(cell);
-        
-        browsers.forEach(function( browser ){
-            cell = document.createElement("td");
-            cell.innerHTML = browser.indexOf(property) < 0 ? "" : "&#10004;";
-            row.appendChild(cell);
-        });
-        
-        table.appendChild(row);
-        
-    });
-    
-    document.body.appendChild( table );
-    
-    document.querySelector("input").addEventListener("keyup", function () {
-        for ( var i = 1; i < table.rows.length; i++ ) {
-            var pattern = new RegExp(this.value, "i");
-            if ( table.rows[i].cells[0].textContent.match(pattern) ) {
-                table.rows[i].style.display = "";
-            } else {
-                table.rows[i].style.display = "none";
-            }
-        }
-    });
+.controller( "mainController", function ( $scope, $routeParams, dataFactory ) {
+
+	$scope.title = $routeParams.feature || "Browser Data";
+	$scope.browsers = [];
+	$scope.features = [];
+
+	$scope.supports = function ( feature, browser, index ) {
+		var profile = feature.browsers[ browser.name ] && feature.browsers[ browser.name ];
+		if ( null === index ) {
+			return profile && profile.hasOwnProperty( browser.version );
+		}
+		return profile && profile[ browser.version ] && ~profile[ browser.version ].indexOf( index );
+	};
+
+	dataFactory.success(function ( response ) {
+		// if ( ! $scope.features.length ) {
+		// $scope.features = response.slice(0,3);	
+		// }
+		$scope.features = $routeParams.feature 
+			? [ _.findWhere( response, { "name": $routeParams.feature } ) ] 
+			: response;
+
+		if ( ! $scope.browsers.length ) {
+			$scope.browsers = [
+				{ "name": "Chrome", "version": "34" },
+				{ "name": "Firefox", "version": "28" },
+				{ "name": "Opera", "version": "12" },
+				{ "name": "IExplorer", "version": "11" }
+			];
+		}
+	});
+
+})
+
+.config( function ( $routeProvider ) {
+
+	$routeProvider
+
+	.when( "/", {
+		templateUrl: "partials/index.html",
+		controller: "mainController"
+	})
+
+	.when( "/:feature", {
+		templateUrl: "partials/feature.html",
+		controller: "mainController"
+	})
+
+	.otherwise({
+		redirectTo: "/"
+	})
 
 });
