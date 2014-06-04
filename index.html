@@ -1,21 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 	<head>
-		<meta charset="UTF-8">
-		<title>Browser Data</title>
-		<script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
-		<script src="//code.angularjs.org/1.3.0-beta.5/angular-route.min.js"></script>
+		<title></title>
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="main.css">
-		<script src="app.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+		<script src="js/angular-route.min.js"></script>
+		<script>
+			angular.module( "browsers", [ "ngRoute" ] );
+		</script>
+		<script src="factory/browsers.js"></script>
+		<script src="features.js"></script>
+		<script src="main.js"></script>
 	</head>
-	<body class="container" ng-app="browserdata">
-
-		<div ng-view></div>
-
-	</body>
+	<body ng-app="browsers" ng-controller="mainController" class="container" ng-view></body>
 </html>

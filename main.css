@@ -1,47 +1,51 @@
-tr {
-  font-size: .75em;
+body {
+	padding-top: 1em;
 }
-
-thead tr:first-child,
-table.index tr:first-child {
-  font-size: 1em;
-  font-weight: bold;
+th, td {
+	vertical-align: middle !important;
+	border-color: rgba( 0, 0, 0, .1 ) !important;
 }
-
-thead th,
-tbody td {
-  text-align: center;
+th:first-child, td:first-child {
+	vertical-align: top !important;
 }
-
-thead th:first-child,
-tbody td:first-child {
-  text-align: left;
+th, td + td {
+	width: 10em;
+	text-align: center;
 }
-
-/* 
-  Themes 63, 53, 21
-*/
-
-.opera {
-    color: #B00;
-    background-color: #FEE;
+tbody tr:first-child {
+	background: rgba( 255, 255, 255, .75 );
 }
-
-.safari {
-    color: grey;
+tr:first-child td:first-child {
+	font-weight: bold;
 }
-
-.chrome {
-    color: #0B0;
-    background-color: #EFE;
+tr + tr {
+	color: #333;
 }
-
-.firefox {
-    color: orangered;
-    background-color: #fff7db;
+td:first-child code {
+	margin-left: 1em;
 }
-
-.iexplorer {
-    color: #00B;
-    background-color: #EEF;
+td[colspan] {
+	color: #999;
+}
+ul.notes {
+	color: #333;
+	margin-bottom: 0;
+	font-size: .85em;
+	line-height: 1.1765em;
+}
+.Chrome {
+	color: green;
+	background: #efe;
+}
+.IExplorer {
+	color: blue;
+	background: #eef;
+}
+.Firefox {
+	color: orange;
+	background: #fff7db;
+}
+.Opera {
+	color: red;
+	background: #fee;
 }
